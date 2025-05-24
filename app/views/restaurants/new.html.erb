@@ -1,0 +1,12 @@
+<div class="container mt-5" style="max-width: 700px;">
+  <h1 class="mb-4">Add a New Restaurant</h1>
+
+  <%= simple_form_for @restaurant do |f| %>
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :phone_number %>
+    <%= f.input :category, collection: Restaurant::CATEGORIES, prompt: "Select a category" %>
+
+    <%= f.button :submit, "Create Restaurant", class: "btn btn-primary" %>
+  <% end %>
+</div>

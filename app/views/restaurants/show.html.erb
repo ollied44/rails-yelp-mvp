@@ -1,0 +1,49 @@
+<div class="container py-5" style="max-width: 700px;">
+  <h1 class="fw-bold mb-2 text-center"><%= @restaurant.name %></h1>
+  <p class="text-muted text-center mb-1"><i class="bi bi-geo-alt"></i> <%= @restaurant.address %></p>
+  <p class="text-muted text-center mb-3"><i class="bi bi-telephone"></i> <%= @restaurant.phone_number %></p>
+  <p class="text-center"><span class="badge bg-primary text-uppercase"><%= @restaurant.category %></span></p>
+
+  <div class="mt-4">
+  <h3>Location</h3>
+  <iframe
+    width="100%"
+    height="300"
+    style="border:0"
+    loading="lazy"
+    allowfullscreen
+    referrerpolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyChYQHxVU5v0V-Cnk_i3-j5r96A4bypUE8&q=<%= URI.encode_www_form_component(@restaurant.address) %>">
+  </iframe>
+</div>
+
+  <hr class="my-4">
+
+  <h4 class="fw-bold">Reviews</h4>
+  <% if @restaurant.reviews.any? %>
+    <div class="list-group shadow-sm mb-4">
+      <% @restaurant.reviews.each do |review| %>
+        <div class="list-group-item">
+          <strong><%= review.rating %>/5</strong> – <%= review.content %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-muted">No reviews yet. Be the first!</p>
+  <% end %>
+
+  <h5 class="fw-bold mt-4">Add a Review</h5>
+  <%= simple_form_for [@restaurant, @review || Review.new] do |f| %>
+    <div class="mb-3">
+      <%= f.input :content, label: false, placeholder: "Write your review here", input_html: { class: "form-control" } %>
+    </div>
+    <div class="mb-3">
+      <%= f.input :rating, label: false, placeholder: "Rating (0-5)", input_html: { class: "form-control" } %>
+    </div>
+    <%= f.button :submit, "Submit Review", class: "btn btn-primary" %>
+  <% end %>
+
+  <div class="mt-4">
+    <%= link_to "< Back to all restaurants".html_safe, restaurants_path, class: "btn btn-link text-decoration-none" %>
+  </div>
+</div>

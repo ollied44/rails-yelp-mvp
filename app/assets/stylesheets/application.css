@@ -13,3 +13,44 @@
  *= require_tree .
  *= require_self
  */
+
+:root {
+  --bs-primary: #002147;
+  --bs-primary-rgb: 0, 33, 71;
+  --bs-body-color: #002147;
+  --bs-link-color: #002147;
+  --bs-link-hover-color: #002147;
+  --bs-heading-color: #002147;
+  --bs-btn-color: #fff; /* White button text for contrast */
+}
+
+.btn-outline-primary {
+  color: #002147 !important;
+  border-color: #002147 !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: #002147 !important;
+  color: #fff !important;
+}
+
+.btn-primary {
+  background-color: #002147 !important;
+  border-color: #002147 !important;
+  color: #fff !important;
+}
+
+.btn-primary:hover {
+  background-color: #001b3a !important; /* Slightly darker navy for hover */
+  border-color: #001b3a !important;
+}
+
+a {
+  color: #002147 !important;
+  text-decoration: none; /* Optional: remove underline */
+}
+
+a:hover {
+  color: #001b3a !important;
+  text-decoration: underline; /* Optional: show underline on hover */
+}
